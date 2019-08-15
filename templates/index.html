@@ -4,13 +4,29 @@
     <meta charset="UTF-8">
     <title>Табличка</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<select id="datepicker" onchange="datepicker_change()">
-  <option value="day">День</option>
-  <option value="week">Неделя</option>
-  <option value="month">Месяц</option>
-</select>
+<div class="row mg-b-10">
+    <div class="col-lg-4">
+        <select class="form-control" id="period_select">
+          <option value="15min">15 минут</option>
+          <option value="30min">30 минут</option>
+          <option value="hour">Последний час</option>
+          <option value="day">День</option>
+          <option value="week" selected>Неделя</option>
+          <option value="month">Месяц</option>
+          <option value="date_range">Период</option>
+        </select>
+    </div>
+    <div class="col-lg-4" id="date_calendar">
+        <input id="date" type="text" class="form-control" value="{{today}}">
+    </div>
+    <div class="col-lg-4 input-daterange input-group" id="date_range">
+        <input id="start" type="text" class="form-control" placeholder="Начало периода" value="{{start}}"/>
+        <input id="end" type="text" class="form-control" placeholder="Конец периода" value="{{today}}"/>
+    </div>
+</div>
 <table id="mytable">
     <thead>
         <tr>
@@ -23,7 +39,22 @@
     </thead>
 </table>
 </body>
+
+<!--jQuery-->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!--Bootstrap-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!--DataTables-->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="{{ url_for('static', filename='vendor/datatables-responsive/js/dataTables.responsive.js')}}"></script>
+
+<!--bootstrap-datepicker-->
+<script src="{{ url_for('static', filename='vendor/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap-datepicker/js/bootstrap-datepicker.ru.min.js')}}"></script>
+
+<!--Client scripts-->
 <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/index.js') }}"></script>
 </html>
