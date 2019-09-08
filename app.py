@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, render_template, request
 from random import randrange
 import utils
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
@@ -30,7 +31,9 @@ def mydata():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',
+                           today=datetime.now().strftime('%d/%m/%Y'),
+                           start=(datetime.now()-timedelta(days=5)).strftime('%d/%m/%Y'))
 
 
 app.run(host='localhost', port=8080, debug=True)

@@ -74,7 +74,7 @@ $('#date').datepicker({
     format: "dd/mm/yyyy",
     maxViewMode: 2,
     language: "ru",
-    orientation: "top right"
+    orientation: "bottom right"
 });
 
 $('.input-daterange').datepicker({
